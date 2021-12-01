@@ -1,6 +1,6 @@
 package br.ufes.dwws.cargo;
 
-import br.ufes.dwws.location.Location;
+import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -25,11 +25,11 @@ public class Itinerary implements ValueObject<Itinerary> {
         return legs;
     }
 
-    public Location initialDepartureLocation() {
+    public UnLocode initialDepartureLocation() {
         return legs.get(0).getLoadLocation();
     }
 
-    public Location finalArrivalLocation() {
+    public UnLocode finalArrivalLocation() {
         return legs.get(legs.size() - 1).getUnloadLocation();
     }
 
@@ -37,16 +37,16 @@ public class Itinerary implements ValueObject<Itinerary> {
         return legs.get(legs.size() - 1).getUnloadTime();
     }
 
-    public boolean isExpected(HandlingActivity event) {
-        Objects.requireNonNull(event);
+    public boolean isExpected(HandlingActivity activity) {
+        Objects.requireNonNull(activity);
 
-        switch (event.getType()) {
+        switch (activity.getType()) {
             case RECEIVE:
-                return initialDepartureLocation().equals(event.getLocation());
+                return initialDepartureLocation().equals(activity.getLocation());
             case LOAD:
-                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameIdentityAs(event.getLocation()) && event.getVoyage().filter(x -> x.sameIdentityAs(leg.getVoyage())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(activity.getLocation()) && activity.getVoyage().filter(x -> x.sameIdentityAs(leg.getVoyage())).isPresent());
             case UNLOAD:
-                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameIdentityAs(event.getLocation()) && event.getVoyage().filter(x -> x.sameIdentityAs(leg.getVoyage())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(activity.getLocation()) && activity.getVoyage().filter(x -> x.sameIdentityAs(leg.getVoyage())).isPresent());
         }
 
         // TODO: continue from here...

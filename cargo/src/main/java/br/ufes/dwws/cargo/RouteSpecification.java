@@ -1,6 +1,6 @@
 package br.ufes.dwws.cargo;
 
-import br.ufes.dwws.location.Location;
+import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.Specification;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import java.time.LocalDateTime;
@@ -8,25 +8,25 @@ import java.util.Objects;
 
 public class RouteSpecification implements ValueObject<RouteSpecification>, Specification<Itinerary> {
 
-    private Location origin;
-    private Location destination;
+    private UnLocode origin;
+    private UnLocode destination;
     private LocalDateTime arrivalDeadline;
 
     protected RouteSpecification() {
     }
 
-    public RouteSpecification(Location origin, Location destination, LocalDateTime arrivalDeadline) {
+    public RouteSpecification(UnLocode origin, UnLocode destination, LocalDateTime arrivalDeadline) {
         this();
         this.origin = Objects.requireNonNull(origin);
         this.destination = Objects.requireNonNull(destination);
         this.arrivalDeadline = Objects.requireNonNull(arrivalDeadline);
     }
 
-    public Location getOrigin() {
+    public UnLocode getOrigin() {
         return origin;
     }
 
-    public Location getDestination() {
+    public UnLocode getDestination() {
         return destination;
     }
 
@@ -37,8 +37,8 @@ public class RouteSpecification implements ValueObject<RouteSpecification>, Spec
     @Override
     public boolean isSatisfiedBy(Itinerary itinerary) {
         return null != itinerary
-                && origin.sameIdentityAs(itinerary.initialDepartureLocation())
-                && destination.sameIdentityAs(itinerary.finalArrivalLocation())
+                && origin.sameValueAs(itinerary.initialDepartureLocation())
+                && destination.sameValueAs(itinerary.finalArrivalLocation())
                 && arrivalDeadline.isAfter(itinerary.finalArrivalTime());
     }
 

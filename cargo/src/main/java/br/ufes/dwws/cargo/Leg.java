@@ -1,6 +1,6 @@
 package br.ufes.dwws.cargo;
 
-import br.ufes.dwws.location.Location;
+import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import br.ufes.dwws.voyage.Voyage;
 import java.time.LocalDateTime;
@@ -9,15 +9,15 @@ import java.util.Objects;
 public class Leg implements ValueObject<Leg> {
 
     private Voyage voyage;
-    private Location loadLocation;
+    private UnLocode loadLocation;
     private LocalDateTime loadTime;
-    private Location unloadLocation;
+    private UnLocode unloadLocation;
     private LocalDateTime unloadTime;
 
     protected Leg() {
     }
 
-    public Leg(Voyage voyage, Location loadLocation, Location unloadLocation, LocalDateTime loadTime, LocalDateTime unloadTime) {
+    public Leg(Voyage voyage, UnLocode loadLocation, LocalDateTime loadTime, UnLocode unloadLocation, LocalDateTime unloadTime) {
         this();
         this.voyage = Objects.requireNonNull(voyage);
         this.loadLocation = Objects.requireNonNull(loadLocation);
@@ -30,7 +30,7 @@ public class Leg implements ValueObject<Leg> {
         return voyage;
     }
 
-    public Location getLoadLocation() {
+    public UnLocode getLoadLocation() {
         return loadLocation;
     }
 
@@ -38,7 +38,7 @@ public class Leg implements ValueObject<Leg> {
         return loadTime;
     }
 
-    public Location getUnloadLocation() {
+    public UnLocode getUnloadLocation() {
         return unloadLocation;
     }
 

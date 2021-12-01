@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd" version="3.0">
+
+    <persistence-unit name="br.ufes.dwws.tracker_PU" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>java:app/jdbc/cargo-tracker</jta-data-source>
+
+        <jar-file>lib/location-domain-1.0-SNAPSHOT.jar</jar-file>
+        <jar-file>lib/voyage-domain-1.0-SNAPSHOT.jar</jar-file>
+        <jar-file>lib/cargo-domain-1.0-SNAPSHOT.jar</jar-file>
+        <jar-file>lib/handling-domain-1.0-SNAPSHOT.jar</jar-file>
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+            <!--<property name="jakarta.persistence.schema-generation.create-script-source" value="META-INF/create.sql"/>-->
+            <property name="jakarta.persistence.schema-generation.drop-source" value="metadata"/>
+            <!--<property name="jakarta.persistence.schema-generation.drop-script-source" value="META-INF/drop.sql"/>-->
+
+            <!--<property name="jakarta.persistence.sql-load-script-source" value="META-INF/load.sql"/>-->
+
+            <property name="jakarta.persistence.schema-generation.scripts.action" value="none"/>
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="file:/tmp/create.sql" />
+            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="file:/tmp/drop.sql"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

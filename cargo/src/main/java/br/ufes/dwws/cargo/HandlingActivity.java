@@ -1,6 +1,6 @@
 package br.ufes.dwws.cargo;
 
-import br.ufes.dwws.location.Location;
+import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import br.ufes.dwws.voyage.Voyage;
 import java.util.Objects;
@@ -9,13 +9,13 @@ import java.util.Optional;
 public class HandlingActivity implements ValueObject<HandlingActivity> {
 
     private HandlingEventType type;
-    private Location location;
+    private UnLocode location;
     private Voyage voyage;
 
     protected HandlingActivity() {
     }
 
-    public HandlingActivity(HandlingEventType type, Location location, Optional<Voyage> voyage) {
+    public HandlingActivity(HandlingEventType type, UnLocode location, Optional<Voyage> voyage) {
         this();
         this.type = Objects.requireNonNull(type);
         this.location = Objects.requireNonNull(location);
@@ -31,7 +31,7 @@ public class HandlingActivity implements ValueObject<HandlingActivity> {
         return type;
     }
 
-    public Location getLocation() {
+    public UnLocode getLocation() {
         return location;
     }
 

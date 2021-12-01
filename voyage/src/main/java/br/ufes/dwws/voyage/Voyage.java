@@ -1,12 +1,14 @@
 package br.ufes.dwws.voyage;
 
 import br.ufes.dwws.utils.ddd.Entity;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Voyage implements Entity<Voyage, VoyageNumber> {
 
     private VoyageNumber voyageNumber;
     private Schedule schedule;
+    private Timestamp version;
 
     protected Voyage() {
     }

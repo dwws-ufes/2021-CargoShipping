@@ -1,15 +1,16 @@
 package br.ufes.dwws.voyage;
 
 import br.ufes.dwws.location.Location;
+import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class CarrierMovement implements ValueObject<CarrierMovement> {
 
-    private Location departureLocation;
+    private UnLocode departureLocation;
     private LocalDateTime departureTime;
-    private Location arrivalLocation;
+    private UnLocode arrivalLocation;
     private LocalDateTime arrivalTime;
 
     protected CarrierMovement() {
@@ -17,13 +18,13 @@ public class CarrierMovement implements ValueObject<CarrierMovement> {
 
     public CarrierMovement(Location departureLocation, Location arrivalLocation, LocalDateTime departureTime, LocalDateTime arrivalTime) {
         this();
-        this.departureLocation = Objects.requireNonNull(departureLocation);
+        this.departureLocation = Objects.requireNonNull(departureLocation).getId();
         this.departureTime = Objects.requireNonNull(departureTime);
-        this.arrivalLocation = Objects.requireNonNull(arrivalLocation);
+        this.arrivalLocation = Objects.requireNonNull(arrivalLocation).getId();
         this.arrivalTime = Objects.requireNonNull(arrivalTime);
     }
 
-    public Location getDepartureLocation() {
+    public UnLocode getDepartureLocation() {
         return departureLocation;
     }
 
@@ -31,7 +32,7 @@ public class CarrierMovement implements ValueObject<CarrierMovement> {
         return departureTime;
     }
 
-    public Location getArrivalLocation() {
+    public UnLocode getArrivalLocation() {
         return arrivalLocation;
     }
 
