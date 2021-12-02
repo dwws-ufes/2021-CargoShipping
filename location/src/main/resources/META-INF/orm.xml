@@ -8,7 +8,11 @@
     <!--
     <entity class="Location" metadata-complete="true">
         <attributes>
-            <embedded-id name="unLocode"/>
+            <embedded-id name="id">
+                <attribute-override name="unlocode">
+                    <column name="id"/>
+                </attribute-override>
+            </embedded-id>
             <version name="version">
                 <column nullable="false"/>
             </version>

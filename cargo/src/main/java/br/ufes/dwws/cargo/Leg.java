@@ -2,13 +2,13 @@ package br.ufes.dwws.cargo;
 
 import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
-import br.ufes.dwws.voyage.Voyage;
+import br.ufes.dwws.voyage.VoyageNumber;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Leg implements ValueObject<Leg> {
 
-    private Voyage voyage;
+    private VoyageNumber voyageNumber;
     private UnLocode loadLocation;
     private LocalDateTime loadTime;
     private UnLocode unloadLocation;
@@ -17,17 +17,17 @@ public class Leg implements ValueObject<Leg> {
     protected Leg() {
     }
 
-    public Leg(Voyage voyage, UnLocode loadLocation, LocalDateTime loadTime, UnLocode unloadLocation, LocalDateTime unloadTime) {
+    public Leg(VoyageNumber voyageNumber, UnLocode loadLocation, LocalDateTime loadTime, UnLocode unloadLocation, LocalDateTime unloadTime) {
         this();
-        this.voyage = Objects.requireNonNull(voyage);
+        this.voyageNumber = Objects.requireNonNull(voyageNumber);
         this.loadLocation = Objects.requireNonNull(loadLocation);
         this.loadTime = Objects.requireNonNull(loadTime);
         this.unloadLocation = Objects.requireNonNull(unloadLocation);
         this.unloadTime = Objects.requireNonNull(unloadTime);
     }
 
-    public Voyage getVoyage() {
-        return voyage;
+    public VoyageNumber getVoyageNumber() {
+        return voyageNumber;
     }
 
     public UnLocode getLoadLocation() {
@@ -48,7 +48,7 @@ public class Leg implements ValueObject<Leg> {
 
     @Override
     public boolean sameValueAs(Leg other) {
-        if (!Objects.equals(this.voyage, other.voyage)) {
+        if (!Objects.equals(this.voyageNumber, other.voyageNumber)) {
             return false;
         } else if (!Objects.equals(this.loadLocation, other.loadLocation)) {
             return false;
@@ -64,12 +64,12 @@ public class Leg implements ValueObject<Leg> {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.voyage);
-        hash = 53 * hash + Objects.hashCode(this.loadLocation);
-        hash = 53 * hash + Objects.hashCode(this.loadTime);
-        hash = 53 * hash + Objects.hashCode(this.unloadLocation);
-        hash = 53 * hash + Objects.hashCode(this.unloadTime);
+        int hash = 5;
+        hash = 13 * hash + Objects.hashCode(this.voyageNumber);
+        hash = 13 * hash + Objects.hashCode(this.loadLocation);
+        hash = 13 * hash + Objects.hashCode(this.loadTime);
+        hash = 13 * hash + Objects.hashCode(this.unloadLocation);
+        hash = 13 * hash + Objects.hashCode(this.unloadTime);
         return hash;
     }
 

@@ -2,7 +2,7 @@ package br.ufes.dwws.cargo;
 
 import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
-import br.ufes.dwws.voyage.Voyage;
+import br.ufes.dwws.voyage.VoyageNumber;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -10,21 +10,21 @@ public class HandlingActivity implements ValueObject<HandlingActivity> {
 
     private HandlingEventType type;
     private UnLocode location;
-    private Voyage voyage;
+    private VoyageNumber voyageNumber;
 
     protected HandlingActivity() {
     }
 
-    public HandlingActivity(HandlingEventType type, UnLocode location, Optional<Voyage> voyage) {
+    public HandlingActivity(HandlingEventType type, UnLocode location, Optional<VoyageNumber> voyageNumber) {
         this();
         this.type = Objects.requireNonNull(type);
         this.location = Objects.requireNonNull(location);
 
-        if (type.isVoyageRequired() && voyage.isEmpty()) {
+        if (type.isVoyageRequired() && voyageNumber.isEmpty()) {
             throw new IllegalArgumentException();
         }
 
-        this.voyage = voyage.orElse(null);
+        this.voyageNumber = voyageNumber.orElse(null);
     }
 
     public HandlingEventType getType() {
@@ -35,8 +35,8 @@ public class HandlingActivity implements ValueObject<HandlingActivity> {
         return location;
     }
 
-    public Optional<Voyage> getVoyage() {
-        return Optional.ofNullable(voyage);
+    public Optional<VoyageNumber> getVoyageNumber() {
+        return Optional.ofNullable(voyageNumber);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class HandlingActivity implements ValueObject<HandlingActivity> {
             return false;
         } else if (!Objects.equals(this.location, other.location)) {
             return false;
-        } else if (!Objects.equals(this.voyage, other.voyage)) {
+        } else if (!Objects.equals(this.voyageNumber, other.voyageNumber)) {
             return false;
         }
         return true;
@@ -56,7 +56,7 @@ public class HandlingActivity implements ValueObject<HandlingActivity> {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.type);
         hash = 89 * hash + Objects.hashCode(this.location);
-        hash = 89 * hash + Objects.hashCode(this.voyage);
+        hash = 89 * hash + Objects.hashCode(this.voyageNumber);
         return hash;
     }
 

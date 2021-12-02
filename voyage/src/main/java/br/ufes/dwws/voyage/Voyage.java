@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Voyage implements Entity<Voyage, VoyageNumber> {
 
-    private VoyageNumber voyageNumber;
+    private VoyageNumber id;
     private Schedule schedule;
     private Timestamp version;
 
@@ -15,13 +15,13 @@ public class Voyage implements Entity<Voyage, VoyageNumber> {
 
     public Voyage(VoyageNumber voyageNumber, Schedule schedule) {
         this();
-        this.voyageNumber = Objects.requireNonNull(voyageNumber);
+        this.id = Objects.requireNonNull(voyageNumber);
         this.schedule = Objects.requireNonNull(schedule);
     }
 
     @Override
     public VoyageNumber getId() {
-        return voyageNumber;
+        return id;
     }
 
     public Schedule getSchedule() {
@@ -30,13 +30,13 @@ public class Voyage implements Entity<Voyage, VoyageNumber> {
 
     @Override
     public boolean sameIdentityAs(Voyage other) {
-        return Objects.equals(this.voyageNumber, other.voyageNumber);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.voyageNumber);
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

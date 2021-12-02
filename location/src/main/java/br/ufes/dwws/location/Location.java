@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Location implements Entity<Location, UnLocode> {
 
     // public static final Location UNKNOWN = new Location(new UnLocode("XXXXX"), "Unknown location");
-    private UnLocode unLocode;
+    private UnLocode id;
     private String name;
 
     protected Location() {
@@ -14,13 +14,13 @@ public class Location implements Entity<Location, UnLocode> {
 
     public Location(UnLocode unLocode, String name) {
         this();
-        this.unLocode = Objects.requireNonNull(unLocode, "location UN/LOCODE must not be null");
+        this.id = Objects.requireNonNull(unLocode, "location UN/LOCODE must not be null");
         this.name = Objects.requireNonNull(name, "location name must not be null");
     }
 
     @Override
     public UnLocode getId() {
-        return unLocode;
+        return id;
     }
 
     public String getName() {
@@ -29,13 +29,13 @@ public class Location implements Entity<Location, UnLocode> {
 
     @Override
     public boolean sameIdentityAs(Location other) {
-        return Objects.equals(this.unLocode, other.unLocode);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 47 * hash + Objects.hashCode(this.unLocode);
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

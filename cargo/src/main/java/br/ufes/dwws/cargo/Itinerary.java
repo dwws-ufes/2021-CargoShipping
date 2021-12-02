@@ -44,9 +44,9 @@ public class Itinerary implements ValueObject<Itinerary> {
             case RECEIVE:
                 return initialDepartureLocation().equals(activity.getLocation());
             case LOAD:
-                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(activity.getLocation()) && activity.getVoyage().filter(x -> x.sameIdentityAs(leg.getVoyage())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(activity.getLocation()) && activity.getVoyageNumber().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
             case UNLOAD:
-                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(activity.getLocation()) && activity.getVoyage().filter(x -> x.sameIdentityAs(leg.getVoyage())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(activity.getLocation()) && activity.getVoyageNumber().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
         }
 
         // TODO: continue from here...

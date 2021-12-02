@@ -5,25 +5,25 @@ import java.util.Objects;
 
 public class TrackingId implements ValueObject<TrackingId> {
 
-    private String id;
+    private String trackingId;
 
     protected TrackingId() {
     }
 
     public TrackingId(String id) {
         this();
-        this.id = Objects.requireNonNull(id, "tracking id must not be null");
+        this.trackingId = Objects.requireNonNull(id, "tracking id must not be null");
     }
 
     @Override
     public boolean sameValueAs(TrackingId other) {
-        return Objects.equals(this.id, other.id);
+        return Objects.equals(this.trackingId, other.trackingId);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.id);
+        hash = 73 * hash + Objects.hashCode(this.trackingId);
         return hash;
     }
 

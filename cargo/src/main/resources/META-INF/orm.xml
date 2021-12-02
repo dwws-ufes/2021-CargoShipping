@@ -8,7 +8,7 @@
     <entity class="Cargo" metadata-complete="true">
         <attributes>
             <embedded-id name="trackingId">
-                <attribute-override name="id">
+                <attribute-override name="trackingId">
                     <column name="tracking_id"/>
                 </attribute-override>
             </embedded-id>
@@ -33,7 +33,7 @@
 
     <embeddable class="TrackingId" metadata-complete="true">
         <attributes>
-            <basic name="id" optional="false"/>
+            <basic name="trackingId" optional="false"/>
         </attributes>
     </embeddable>
 
@@ -55,6 +55,12 @@
         </attributes>
     </embeddable>
 
+    <embeddable class="Itinerary" metadata-complete="true">
+        <attributes>
+            <element-collection name="legs"/>
+        </attributes>
+    </embeddable>
+
     <embeddable class="Leg" metadata-complete="true">
         <attributes>
             <basic name="loadTime" optional="false">
@@ -63,9 +69,11 @@
             <basic name="unloadTime" optional="false">
                 <column name="unload_time"/>
             </basic>
-            <many-to-one name="voyage" optional="false">
-                <join-column name="voyage_number"/>
-            </many-to-one>
+            <embedded name="voyageNumber">
+                <attribute-override name="number">
+                    <column name="voyage_number"/>
+                </attribute-override>
+            </embedded>
             <embedded name="loadLocation">
                 <attribute-override name="unlocode">
                     <column name="load_unlocode"/>
@@ -76,12 +84,6 @@
                     <column name="unload_unlocode"/>
                 </attribute-override>
             </embedded>
-        </attributes>
-    </embeddable>
-
-    <embeddable class="Itinerary" metadata-complete="true">
-        <attributes>
-            <element-collection name="legs"/>
         </attributes>
     </embeddable>
 

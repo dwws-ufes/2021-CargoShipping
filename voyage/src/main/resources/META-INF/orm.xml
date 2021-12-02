@@ -5,11 +5,12 @@
     <schema>voyage</schema>
     <access>FIELD</access>
 
+    <!--
     <entity class="Voyage" metadata-complete="true">
         <attributes>
-            <embedded-id name="voyageNumber">
+            <embedded-id name="id">
                 <attribute-override name="number">
-                    <column name="voyage_number"/>
+                    <column name="voyage_id"/>
                 </attribute-override>
             </embedded-id>
             <version name="version">
@@ -24,6 +25,7 @@
             </embedded>
         </attributes>
     </entity>
+    -->
 
     <embeddable class="VoyageNumber" metadata-complete="true">
         <attributes>
