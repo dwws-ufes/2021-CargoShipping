@@ -1,7 +1,12 @@
 package br.ufes.dwws.handling;
 
-public interface HandlingEventRepository {
+import br.ufes.dwws.cargo.Cargo;
+import br.ufes.dwws.utils.ddd.Repository;
+import java.util.List;
+
+public interface HandlingEventRepository extends Repository<HandlingEvent, Long> {
 
     void store(HandlingEvent event);
 
+    List<HandlingEvent> findByCargo(Cargo cargo);
 }
