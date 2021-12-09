@@ -1,0 +1,118 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>200</x><y>100</y><w>160</w><h>80</h></coordinates><panel_attributes>Location
+--
+- id: UnLocode
+- name: String
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>60</y><w>390</w><h>260</h></coordinates><panel_attributes>br.ufes.dwws.location
+--
+
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>100</y><w>160</w><h>80</h></coordinates><panel_attributes>&lt;&lt;ValueObject&gt;&gt;
+UnLocode
+--
+- unlocode: String
+--
++ toString(): String
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>550</x><y>60</y><w>590</w><h>320</h></coordinates><panel_attributes>br.ufes.dwws.voyage
+--
+
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>200</y><w>270</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Repository&gt;&gt;
+/LocationRepository/
+--
++ find(id: UnLocode): Optional&lt;Location&gt;
++ findAll(offset: int, limit: int): List&lt;Location&gt;
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>220</y><w>160</w><h>80</h></coordinates><panel_attributes>&lt;&lt;ValueObject&gt;&gt;
+VoyageNumber
+--
+- number: String
+--
++ toString(): String
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>100</y><w>130</w><h>80</h></coordinates><panel_attributes>Voyage
+--
+- id: VoyageNumber
+
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>100</y><w>210</w><h>110</h></coordinates><panel_attributes>CarrierMovement
+--
+- departureLocation: UnLocode
+- departureTime: LocalDateTime
+- arrivalLocation: LocalDateTime
+- arrivalTime: LocalDateTime
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>140</y><w>220</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..*
+group=6</panel_attributes><additional_attributes>10;10;200;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>210</y><w>90</w><h>30</h></coordinates><panel_attributes>Schedule
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>140</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=.
+
+group=6</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>260</y><w>350</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Repository&gt;&gt;
+/VoyageRepository/
+--
++ find(id: VoyageNumber): Optional&lt;Voyage&gt;
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>550</x><y>400</y><w>870</w><h>390</h></coordinates><panel_attributes>br.ufes.dwws.cargo
+--
+
+group=7</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>440</y><w>240</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Entity&gt;&gt;
+Cargo
+--
+- trackingId: String {id}
+- origin: UnLocode
+- version: LocalDateTime {version}
+--
++ assignToRoute(itinerary: Itinerary)
+group=7</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>400</y><w>500</w><h>380</h></coordinates><panel_attributes>br.ufes.dwws.handling
+--
+
+group=4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>440</y><w>250</w><h>180</h></coordinates><panel_attributes>&lt;&lt;DomainEvent, Entity&gt;&gt;
+HandlingEvent
+--
+- id: long
+- type: HandlingEventType
+- cargo: Cargo
+- location: UnLocode
+- completionTime: LocalDateTime
+- registrationTime: LocalDateTime
+- voyage: VoyageNumber { null }
+- version: LocalDateTime {version}
+group=4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>440</y><w>190</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+HandlingEventType
+--
++ LOAD
++ UNLOAD
++ RECEIVE
++ CLAIM
++ CUSTOMS
+--
++ isVoyageRequired(): boolean
+group=4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1220</x><y>440</y><w>180</w><h>100</h></coordinates><panel_attributes>&lt;&lt;Specification, ValueObject&gt;&gt;
+RouteSpecification
+--
+- origin: UnLocode
+- destination: UnLocode
+- arrivalTime: LocalDateTime
+group=7</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>480</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1
+group=7</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>470</y><w>180</w><h>110</h></coordinates><panel_attributes>Leg
+--
+- voyage: VoyageNumber
+- loadLocation: UnLocode
+- loadTime: LocalDateTime
+- unloadLocation: UnLocode
+- unloadTime: LocalDateTime
+group=7</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>520</y><w>190</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=0..1
+m2=1..*
+group=7</panel_attributes><additional_attributes>170;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>660</y><w>410</w><h>90</h></coordinates><panel_attributes>&lt;&lt;DomainService&gt;&gt;
+/RoutingService/
+--
++ fetchRoutesForSpecification(route: RouteSpecification): List&lt;Itinerary&gt;
+group=7</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>640</y><w>290</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Repository&gt;&gt;
+/HandlingEventRepository/
+--
++ findByCargo(cargo: Cargo): List&lt;HandlingEvent&gt;
++ store(event: HandlingEvent)
+group=4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>590</y><w>100</w><h>30</h></coordinates><panel_attributes>Itinerary
+group=7</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>520</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=.
+
+group=7</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1030</x><y>660</y><w>230</w><h>100</h></coordinates><panel_attributes>&lt;&lt;Repository&gt;&gt;
+/CargoRepository/
+--
++ nextTrackingId(): TrackingId
++ find(id: TrackingId): Optional&lt;Cargo&gt;
++ store(cargo: Cargo)
+group=7</panel_attributes><additional_attributes></additional_attributes></element></diagram>
