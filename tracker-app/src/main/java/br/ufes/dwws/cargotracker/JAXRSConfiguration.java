@@ -1,4 +1,4 @@
-package br.ufes.dwws.tracker;
+package br.ufes.dwws.cargotracker;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

@@ -21,7 +21,7 @@
             <!--<property name="jakarta.persistence.sql-load-script-source" value="META-INF/load.sql"/>-->
 
             <property name="jakarta.persistence.schema-generation.scripts.action" value="none"/>
-            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="file:/tmp/create.sql" />
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="file:/tmp/create.sql"/>
             <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="file:/tmp/drop.sql"/>
         </properties>
     </persistence-unit>

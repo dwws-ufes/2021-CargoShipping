@@ -13,6 +13,7 @@
         <module>voyage</module>
         <module>cargo</module>
         <module>tracker-app</module>
+        <module>event-listener-api</module>
     </modules>
 
     <properties>
@@ -22,6 +23,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>jakarta.platform</groupId>
+                <artifactId>jakarta.jakartaee-api</artifactId>
+                <version>9.1.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>

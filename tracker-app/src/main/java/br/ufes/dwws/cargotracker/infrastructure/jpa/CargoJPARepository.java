@@ -1,4 +1,4 @@
-package br.ufes.dwws.infrastructure.jpa;
+package br.ufes.dwws.cargotracker.infrastructure.jpa;
 
 import br.ufes.dwws.cargo.Cargo;
 import br.ufes.dwws.cargo.CargoRepository;
