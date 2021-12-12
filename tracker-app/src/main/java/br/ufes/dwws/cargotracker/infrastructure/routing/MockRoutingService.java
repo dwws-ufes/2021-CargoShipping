@@ -1,4 +1,4 @@
-package br.ufes.dwws.infrastructure.routing;
+package br.ufes.dwws.cargotracker.infrastructure.routing;
 
 import br.ufes.dwws.cargo.Itinerary;
 import br.ufes.dwws.cargo.RouteSpecification;

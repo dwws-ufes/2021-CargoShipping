@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cargo-tracker-app</artifactId>
+    <artifactId>event-listener-api</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
@@ -22,7 +22,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>voyage-domain</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency> 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cargo-domain</artifactId>

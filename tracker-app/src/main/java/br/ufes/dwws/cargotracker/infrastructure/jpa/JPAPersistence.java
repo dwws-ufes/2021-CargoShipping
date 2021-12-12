@@ -1,4 +1,4 @@
-package br.ufes.dwws.infrastructure.jpa;
+package br.ufes.dwws.cargotracker.infrastructure.jpa;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

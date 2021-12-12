@@ -1,4 +1,4 @@
-package br.ufes.dwws.infrastructure.jpa;
+package br.ufes.dwws.cargotracker.infrastructure.jpa;
 
 import br.ufes.dwws.cargo.Cargo;
 import br.ufes.dwws.handling.HandlingEvent;
@@ -11,12 +11,12 @@ import java.util.Optional;
 @ApplicationScoped
 class HandlingEventJPARepository extends JPAPersistence implements HandlingEventRepository {
 
-    private static final String FIND_ALL = "HandlingEvent.findAll";
+    // private static final String FIND_ALL = "HandlingEvent.findAll";
     private static final String FIND_BY_CARGO = "HandlingEvent.findByCargo";
 
     @Override
     public void register(HandlingEvent event) {
-        getEntityManager().persist(event);
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -28,14 +28,11 @@ class HandlingEventJPARepository extends JPAPersistence implements HandlingEvent
 
     @Override
     public Optional<HandlingEvent> find(Long id) {
-        return Optional.ofNullable(getEntityManager().find(HandlingEvent.class, id));
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Collection<HandlingEvent> findAll(int offset, int limit) {
-        return getEntityManager().createNamedQuery(FIND_ALL, HandlingEvent.class)
-                .setFirstResult(offset)
-                .setMaxResults(limit)
-                .getResultList();
+        throw new UnsupportedOperationException();
     }
 }
