@@ -13,10 +13,8 @@ public class Delivery implements ValueObject<Delivery> {
     private boolean misdirected;
     private LocalDateTime eta;
     // private HandlingEvent lastEvent;
-    private HandlingActivity lastActivity;
-    private HandlingActivity nextExpectedActivity;
+    // private HandlingEvent nextExpectedEvent;
     private boolean isUnloadedAtDestination;
-    private RoutingStatus routingStatus;
     private LocalDateTime calculatedAt;
 
     protected Delivery() {

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence/orm https://jakarta.ee/xml/ns/persistence/orm/orm_3_0.xsd" version="3.0">
 
-    <package>br.ufes.dwws.cargo</package>
     <schema>cargo</schema>
     <access>FIELD</access>
 
-    <entity class="Cargo" metadata-complete="true">
+    <entity class="br.ufes.dwws.cargo.Cargo" metadata-complete="true">
         <attributes>
             <embedded-id name="trackingId">
                 <attribute-override name="trackingId">
@@ -31,13 +30,40 @@
         </attributes>
     </entity>
 
-    <embeddable class="TrackingId" metadata-complete="true">
+    <entity class="br.ufes.dwws.handling.HandlingEvent" metadata-complete="true">
+        <sequence-generator name="handlingEventSeq" allocation-size="1"/>
+        <attributes>
+            <id name="id">
+                <generated-value generator="handlingEventSeq"/>
+            </id>
+            <basic name="type" optional="false">
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic name="completionTime" optional="false">
+                <column name="completion_time"/>
+            </basic>
+            <version name="version">
+                <column nullable="false"/>
+            </version>
+            <many-to-one name="cargo" optional="false">
+                <join-column name="tracking_id"/>
+            </many-to-one>
+            <embedded name="location"/>
+            <embedded name="voyage">
+                <attribute-override name="number">
+                    <column name="voyage_number"/>
+                </attribute-override>
+            </embedded>
+        </attributes>
+    </entity>
+
+    <embeddable class="br.ufes.dwws.cargo.TrackingId" metadata-complete="true">
         <attributes>
             <basic name="trackingId" optional="false"/>
         </attributes>
     </embeddable>
 
-    <embeddable class="RouteSpecification" metadata-complete="true">
+    <embeddable class="br.ufes.dwws.cargo.RouteSpecification" metadata-complete="true">
         <attributes>
             <basic name="arrivalDeadline" optional="false">
                 <column name="specification_arrival_deadline"/>
@@ -55,13 +81,13 @@
         </attributes>
     </embeddable>
 
-    <embeddable class="Itinerary" metadata-complete="true">
+    <embeddable class="br.ufes.dwws.cargo.Itinerary" metadata-complete="true">
         <attributes>
             <element-collection name="legs"/>
         </attributes>
     </embeddable>
 
-    <embeddable class="Leg" metadata-complete="true">
+    <embeddable class="br.ufes.dwws.cargo.Leg" metadata-complete="true">
         <attributes>
             <basic name="loadTime" optional="false">
                 <column name="load_time"/>
@@ -71,7 +97,7 @@
             </basic>
             <embedded name="voyageNumber">
                 <attribute-override name="number">
-                    <column name="voyage_number"/>
+                    <column name="voyage_number" nullable="false"/>
                 </attribute-override>
             </embedded>
             <embedded name="loadLocation">

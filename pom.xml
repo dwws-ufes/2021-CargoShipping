@@ -12,7 +12,6 @@
         <module>location</module>
         <module>voyage</module>
         <module>cargo</module>
-        <module>handling</module>
         <module>tracker-app</module>
     </modules>
 

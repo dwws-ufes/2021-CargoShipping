@@ -8,7 +8,6 @@
         <jar-file>lib/location-domain-1.0-SNAPSHOT.jar</jar-file>
         <jar-file>lib/voyage-domain-1.0-SNAPSHOT.jar</jar-file>
         <jar-file>lib/cargo-domain-1.0-SNAPSHOT.jar</jar-file>
-        <jar-file>lib/handling-domain-1.0-SNAPSHOT.jar</jar-file>
 
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 

@@ -19,3 +19,18 @@ create table cargo.Itinerary (
 );
 
 alter table cargo.Itinerary add constraint FK_Itinerary_Cargo foreign key (tracking_id) references cargo.Cargo;
+
+create sequence handlingEventSeq start with 1 increment by 1;
+
+create table cargo.HandlingEvent (
+    id bigint not null, 
+    type varchar(255) not null, 
+    tracking_id varchar(255) not null, 
+    unlocode varchar(255) not null, 
+    completion_time timestamp not null, 
+    voyage_number varchar(255), 
+    version timestamp not null, 
+    primary key (id)
+);
+
+alter table cargo.HandlingEvent add constraint FK_HandlingEvent_Cargo foreign key (tracking_id) references cargo.Cargo;

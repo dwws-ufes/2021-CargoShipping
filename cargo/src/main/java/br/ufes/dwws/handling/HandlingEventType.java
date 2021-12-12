@@ -1,4 +1,4 @@
-package br.ufes.dwws.cargo;
+package br.ufes.dwws.handling;
 
 public enum HandlingEventType {
 

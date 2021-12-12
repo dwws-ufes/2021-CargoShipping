@@ -1,5 +1,6 @@
 package br.ufes.dwws.cargo;
 
+import br.ufes.dwws.handling.HandlingEvent;
 import br.ufes.dwws.location.UnLocode;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import java.time.LocalDateTime;
@@ -37,16 +38,16 @@ public class Itinerary implements ValueObject<Itinerary> {
         return legs.get(legs.size() - 1).getUnloadTime();
     }
 
-    public boolean isExpected(HandlingActivity activity) {
-        Objects.requireNonNull(activity);
+    boolean isExpected(HandlingEvent event) {
+        Objects.requireNonNull(event);
 
-        switch (activity.getType()) {
+        switch (event.getType()) {
             case RECEIVE:
-                return initialDepartureLocation().equals(activity.getLocation());
+                return initialDepartureLocation().equals(event.getLocation());
             case LOAD:
-                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(activity.getLocation()) && activity.getVoyageNumber().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(event.getLocation()) && event.getVoyage().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
             case UNLOAD:
-                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(activity.getLocation()) && activity.getVoyageNumber().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(event.getLocation()) && event.getVoyage().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
         }
 
         // TODO: continue from here...

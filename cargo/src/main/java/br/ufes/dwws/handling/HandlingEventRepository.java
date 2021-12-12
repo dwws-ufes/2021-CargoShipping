@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface HandlingEventRepository extends Repository<HandlingEvent, Long> {
 
-    void store(HandlingEvent event);
+    void register(HandlingEvent event);
 
     List<HandlingEvent> findByCargo(Cargo cargo);
 }
