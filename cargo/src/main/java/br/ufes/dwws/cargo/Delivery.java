@@ -20,6 +20,7 @@ public class Delivery implements ValueObject<Delivery> {
     protected Delivery() {
     }
 
+    // TODO: finish the implementation
     @Override
     public boolean sameValueAs(Delivery other) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

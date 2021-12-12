@@ -1,6 +1,6 @@
 
 create table cargo.Cargo (
-    tracking_id varchar(255) not null, 
+    tracking_id varchar(63) not null, 
     origin_unlocode varchar(255) not null, 
     specification_origin_unlocode varchar(255) not null, 
     specification_destination_unlocode varchar(255) not null, 
@@ -10,7 +10,7 @@ create table cargo.Cargo (
 );
 
 create table cargo.Itinerary (
-    tracking_id varchar(255) not null, 
+    tracking_id varchar(63) not null, 
     load_unlocode varchar(255) not null, 
     load_time timestamp not null, 
     unload_unlocode varchar(255) not null, 
@@ -25,7 +25,7 @@ create sequence handlingEventSeq start with 1 increment by 1;
 create table cargo.HandlingEvent (
     id bigint not null, 
     type varchar(255) not null, 
-    tracking_id varchar(255) not null, 
+    tracking_id varchar(63) not null, 
     unlocode varchar(255) not null, 
     completion_time timestamp not null, 
     voyage_number varchar(255), 

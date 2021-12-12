@@ -4,11 +4,23 @@
     <schema>cargo</schema>
     <access>FIELD</access>
 
+    <named-query name="Cargo.findAll">
+        <query><![CDATA[SELECT c FROM Cargo c ORDER BY c.trackingId ASC]]></query>
+    </named-query>
+
+    <named-query name="HandlingEvent.findAll">
+        <query><![CDATA[SELECT e FROM HandlingEvent e ORDER BY e.id ASC]]></query>
+    </named-query>
+
+    <named-query name="HandlingEvent.findByCargo">
+        <query><![CDATA[SELECT e FROM HandlingEvent e WHERE e.cargo = :cargo ORDER BY e.id ASC]]></query>
+    </named-query>
+
     <entity class="br.ufes.dwws.cargo.Cargo" metadata-complete="true">
         <attributes>
             <embedded-id name="trackingId">
                 <attribute-override name="trackingId">
-                    <column name="tracking_id"/>
+                    <column name="tracking_id" length="63"/>
                 </attribute-override>
             </embedded-id>
             <version name="version">
