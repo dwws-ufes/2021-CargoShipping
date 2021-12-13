@@ -11,6 +11,10 @@
 
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
+        <properties>
+            <!--HIBERNATE PROPERTIES-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect" />
+        </properties>
     </persistence-unit>
 
 </persistence>

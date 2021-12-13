@@ -22,7 +22,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>voyage-domain</artifactId>
             <version>${project.version}</version>
-        </dependency> 
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cargo-domain</artifactId>
@@ -38,8 +38,8 @@
 
         <!-- JDBC -->
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbyclient</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
