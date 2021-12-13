@@ -20,10 +20,10 @@ create table cargo.Itinerary (
 
 alter table cargo.Itinerary add constraint FK_Itinerary_Cargo foreign key (tracking_id) references cargo.Cargo;
 
-create sequence handlingEventSeq start with 1 increment by 1;
+create sequence handlingEventSeq start 1 increment 1;
 
 create table cargo.HandlingEvent (
-    id bigint not null, 
+    id int8 not null, 
     type varchar(255) not null, 
     tracking_id varchar(63) not null, 
     unlocode varchar(255) not null, 
@@ -34,3 +34,15 @@ create table cargo.HandlingEvent (
 );
 
 alter table cargo.HandlingEvent add constraint FK_HandlingEvent_Cargo foreign key (tracking_id) references cargo.Cargo;
+
+--------------------------------------------------------------------------------
+--- POSTGRES PERMISSIONS
+
+-- GRANT CONNECT ON DATABASE "cargo-shipping" TO "APP";
+ALTER DEFAULT PRIVILEGES GRANT ALL ON TABLES TO "APP";
+ALTER DEFAULT PRIVILEGES GRANT ALL ON SEQUENCES TO "APP";
+ALTER DEFAULT PRIVILEGES GRANT EXECUTE ON FUNCTIONS TO "APP";
+ALTER DEFAULT PRIVILEGES GRANT USAGE ON TYPES TO "APP";
+
+GRANT USAGE ON SCHEMA public TO "APP";
+GRANT USAGE ON SCHEMA cargo TO "APP";

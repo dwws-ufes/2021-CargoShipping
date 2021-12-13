@@ -12,17 +12,20 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
-            <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
+            <property name="jakarta.persistence.schema-generation.create-source" value="metadata" />
             <!--<property name="jakarta.persistence.schema-generation.create-script-source" value="META-INF/create.sql"/>-->
-            <property name="jakarta.persistence.schema-generation.drop-source" value="metadata"/>
+            <property name="jakarta.persistence.schema-generation.drop-source" value="metadata" />
             <!--<property name="jakarta.persistence.schema-generation.drop-script-source" value="META-INF/drop.sql"/>-->
 
             <!--<property name="jakarta.persistence.sql-load-script-source" value="META-INF/load.sql"/>-->
 
-            <property name="jakarta.persistence.schema-generation.scripts.action" value="none"/>
-            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="file:/tmp/create.sql"/>
-            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="file:/tmp/drop.sql"/>
+            <property name="jakarta.persistence.schema-generation.scripts.action" value="none" />
+            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="file:/tmp/create.sql" />
+            <property name="jakarta.persistence.schema-generation.scripts.drop-target" value="file:/tmp/drop.sql" />
+
+            <!--HIBERNATE PROPERTIES-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect" />
         </properties>
     </persistence-unit>
 

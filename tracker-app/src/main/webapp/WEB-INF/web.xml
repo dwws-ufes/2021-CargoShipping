@@ -3,9 +3,9 @@
 
     <data-source>
         <name>java:app/jdbc/cargo-tracker</name>
-        <class-name>org.apache.derby.client.BasicClientDataSource</class-name>
+        <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
         <server-name>localhost</server-name>
-        <port-number>1527</port-number>
+        <port-number>5432</port-number>
         <database-name>cargo-shipping</database-name>
         <user>APP</user>
         <password><![CDATA[secret]]></password>
