@@ -4,6 +4,7 @@ import br.ufes.dwws.utils.ddd.Entity;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+/** A voyage. */
 public class Voyage implements Entity<Voyage, VoyageNumber> {
 
     private VoyageNumber id;

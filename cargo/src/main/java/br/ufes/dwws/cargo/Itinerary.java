@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/** An itinerary. */
 public class Itinerary implements ValueObject<Itinerary> {
 
     private List<Leg> legs;
@@ -38,6 +39,12 @@ public class Itinerary implements ValueObject<Itinerary> {
         return legs.get(legs.size() - 1).getUnloadTime();
     }
 
+    /**
+     * Test if the given handling event is expected when executing this itinerary.
+     * 
+     * @param event Event to test.
+     * @return <code>true</code> if the event is expected.
+     */
     boolean isExpected(HandlingEvent event) {
         Objects.requireNonNull(event);
 
@@ -45,9 +52,11 @@ public class Itinerary implements ValueObject<Itinerary> {
             case RECEIVE:
                 return initialDepartureLocation().equals(event.getLocation());
             case LOAD:
-                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(event.getLocation()) && event.getVoyage().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getLoadLocation().sameValueAs(event.getLocation())
+                        && leg.getVoyageNumber().sameValueAs(event.getVoyage().orElse(null)));
             case UNLOAD:
-                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(event.getLocation()) && event.getVoyage().filter(x -> x.sameValueAs(leg.getVoyageNumber())).isPresent());
+                return legs.stream().anyMatch(leg -> leg.getUnloadLocation().sameValueAs(event.getLocation())
+                        && leg.getVoyageNumber().sameValueAs(event.getVoyage().orElse(null)));
         }
 
         // TODO: continue from here...

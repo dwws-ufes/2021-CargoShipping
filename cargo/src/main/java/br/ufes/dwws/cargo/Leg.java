@@ -6,6 +6,7 @@ import br.ufes.dwws.voyage.VoyageNumber;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/** An itinerary consists of one or more legs. */
 public class Leg implements ValueObject<Leg> {
 
     private VoyageNumber voyageNumber;

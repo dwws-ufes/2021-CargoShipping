@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/** A voyage schedule. */
 public class Schedule implements ValueObject<Schedule> {
 
     private List<CarrierMovement> carrierMovements;

@@ -3,6 +3,7 @@ package br.ufes.dwws.voyage;
 import br.ufes.dwws.utils.ddd.ValueObject;
 import java.util.Objects;
 
+/** Identifies a voyage. */
 public class VoyageNumber implements ValueObject<VoyageNumber> {
 
     private String number;

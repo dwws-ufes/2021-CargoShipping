@@ -6,6 +6,10 @@ import br.ufes.dwws.utils.ddd.ValueObject;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Route specification. Describes where a cargo origin and destination is, and
+ * the arrival deadline.
+ */
 public class RouteSpecification implements ValueObject<RouteSpecification>, Specification<Itinerary> {
 
     private UnLocode origin;

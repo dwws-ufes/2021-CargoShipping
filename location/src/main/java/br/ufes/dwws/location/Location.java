@@ -3,9 +3,14 @@ package br.ufes.dwws.location;
 import br.ufes.dwws.utils.ddd.Entity;
 import java.util.Objects;
 
+/**
+ * A location in our model is stops on a journey, such as cargo origin or
+ * destination, or carrier movement end points.
+ * <p>
+ * It is uniquely identified by a UN location code.
+ */
 public class Location implements Entity<Location, UnLocode> {
 
-    // public static final Location UNKNOWN = new Location(new UnLocode("XXXXX"), "Unknown location");
     private UnLocode id;
     private String name;
 

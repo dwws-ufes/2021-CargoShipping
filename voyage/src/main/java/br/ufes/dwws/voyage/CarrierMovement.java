@@ -6,6 +6,7 @@ import br.ufes.dwws.utils.ddd.ValueObject;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/** A carrier movement is a vessel voyage from one location to another. */
 public class CarrierMovement implements ValueObject<CarrierMovement> {
 
     private UnLocode departureLocation;

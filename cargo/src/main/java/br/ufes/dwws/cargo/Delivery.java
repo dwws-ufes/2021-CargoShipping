@@ -5,6 +5,10 @@ import br.ufes.dwws.utils.ddd.ValueObject;
 import br.ufes.dwws.voyage.Voyage;
 import java.time.LocalDateTime;
 
+/**
+ * The actual transportation of the cargo, as opposed to the customer
+ * requirement ({@link RouteSpecification}) and the plan ({@link Itinerary}).
+ */
 public class Delivery implements ValueObject<Delivery> {
 
     private TransportStatus transportStatus;
@@ -23,6 +27,6 @@ public class Delivery implements ValueObject<Delivery> {
     // TODO: finish the implementation
     @Override
     public boolean sameValueAs(Delivery other) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
